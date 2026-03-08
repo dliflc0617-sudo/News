@@ -160,7 +160,7 @@ function buildEmailHtml(digest: DailyDigest) {
       <main style="max-width:860px;margin:0 auto;background:linear-gradient(180deg,#ffffff 0%,#f8fafc 100%);border-radius:28px;padding:40px 28px;border:1px solid #e5e7eb;">
         <div style="margin-bottom:28px;">
           <div style="display:inline-block;padding:8px 12px;border-radius:999px;background:#111827;color:#ffffff;font-size:12px;font-weight:700;">${escapeHtml(digest.dateLabelCn)}</div>
-          <h1 style="margin:16px 0 12px;font-size:38px;line-height:1.15;color:#111827;">AI 与金融晨报</h1>
+          <h1 style="margin:16px 0 12px;font-size:38px;line-height:1.15;color:#111827;">每日晨报</h1>
           <p style="margin:0;font-size:17px;line-height:1.8;color:#374151;">${escapeHtml(digest.introCn)}</p>
         </div>
 
@@ -197,7 +197,7 @@ function buildEmailText(digest: DailyDigest) {
   };
 
   return [
-    `AI 与金融晨报 | ${digest.dateLabelCn}`,
+    `每日晨报 | ${digest.dateLabelCn}`,
     "",
     digest.introCn,
     "",
@@ -279,7 +279,7 @@ async function sendDigestEmail(digest: DailyDigest) {
   const response = await resend.emails.send({
     from: env.RESEND_FROM_EMAIL ?? "AI Finance Brief <onboarding@resend.dev>",
     to: env.RESEND_TO_EMAIL,
-    subject: `AI 与金融晨报 | ${digest.dateLabelCn}`,
+    subject: `每日晨报 | ${digest.dateLabelCn}`,
     html: buildEmailHtml(digest),
     text: buildEmailText(digest)
   });
